@@ -19,24 +19,25 @@
 	<!-- ******************************************************** -->
 	 
 	<servlet>
-		<servlet-name>Article</servlet-name>
-		<display-name>Article</display-name> 
-		<servlet-class>controller.Article</servlet-class>
-	</servlet>
-	<servlet>
 		<servlet-name>User</servlet-name>
 		<display-name>User</display-name> 
 		<servlet-class>controller.User</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Article</servlet-name>
+		<display-name>Article</display-name> 
+		<servlet-class>controller.Article</servlet-class>
+	</servlet>
 	 
  <!-- *************************************************************************** -->
- 	<servlet-mapping>
-		<servlet-name>Article</servlet-name>
-		<url-pattern>/Article</url-pattern>
-	</servlet-mapping>
+ 	
 	<servlet-mapping>
 		<servlet-name>User</servlet-name>
 		<url-pattern>/User</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Article</servlet-name>
+		<url-pattern>/Article</url-pattern>
 	</servlet-mapping>
   
 	

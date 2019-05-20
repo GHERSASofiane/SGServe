@@ -15,6 +15,41 @@ import status.Reponse;
 public class UserDAO {
 	private Connection db;
 
+//	Inscription
+	public Reponse InscriptionUser(User user) {
+		try {
+			
+			db = Connexion.getConnection();
+			String query = "INSERT INTO Users " + "( NOMUS,PREUS,ADRUS,TEL1US,TEL2US,MAILUS,MDPUS,STATUS, ROLUS )"
+					+ "VALUES (?,?,?,?,?,?,?,?,?)";
+			PreparedStatement preparedStmt = db.prepareStatement(query);
+			preparedStmt.setString(1, user.getNOMUS().toLowerCase());
+			preparedStmt.setString(2, user.getPREUS().toLowerCase());
+			preparedStmt.setString(3, user.getADRUS().toLowerCase());
+			preparedStmt.setString(4, user.getTEL1US().toLowerCase());
+			preparedStmt.setString(5, user.getTEL2US().toLowerCase());
+			preparedStmt.setString(6, user.getMAILUS().toLowerCase());
+			preparedStmt.setString(7, user.getMDPUS()); 
+			preparedStmt.setDouble(8, user.getSTATUS());
+			preparedStmt.setDouble(9, user.getROLUS()); 
+
+			// execute the prepared statement
+			preparedStmt.execute();
+			preparedStmt.close();
+			db.close();
+
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+			return new Reponse("ko", "Impossible de s'inscrire");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new Reponse("ko", "Impossible de s'inscrire");
+		}
+
+		return new Reponse("ok", "Merci pour votre inscription");
+	}
+	
+	//**************************************************
 //	Ajouter User
 	public Reponse addUser(User user) {
 		try {

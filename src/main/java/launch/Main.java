@@ -37,11 +37,7 @@ public class Main {
 		ctx.setResources(resources);
 
 		tomcat.start();
-
-		// Launch Back-End
-		// test t1 = new test();
-		// t1.testerBack();
-
+ 
 		tomcat.getServer().await();
 	}
 }

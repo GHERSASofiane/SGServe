@@ -86,8 +86,8 @@ public class User extends HttpServlet {
 		// Préparer la réponse
 		UserServices rep = new UserServices();
 
-		if (user.getCMD().equals("ADD")) {
-			result = rep.addUser(user);
+		if (user.getCMD().equals("Inscription")) {
+			result = rep.InscriptionUser(user);
 		}
 
 		// Envoie de réponse
@@ -95,56 +95,4 @@ public class User extends HttpServlet {
 		resp.flush();
 	}
 
-	// ************************************************** méthode delete User
-	@Override
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Récuperer le PrintWriter Pour envoyer la réponse
-		PrintWriter resp = response.getWriter();
-
-		JsonObject result = new JsonObject();
-
-		// extraire les données qu'on a besoin
-		int idUser = -1;
-		try {
-			idUser = Integer.parseInt(request.getParameter("id"));
-		} catch (Exception e) {
-			idUser = -1;
-		}
-
-		// Préparer la réponse
-		UserServices rep = new UserServices();
-//		result = rep.DeleteUser(idUser);
-
-		// Envoie de réponse
-		resp.println(result);
-		resp.flush();
-	}
-
-	// ************************************************** Pour la modification d'un
-	// User
-	@Override
-	protected void doPut(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// Récuperer le PrintWriter Pour envoyer la réponse
-		PrintWriter resp = response.getWriter();
-
-		JsonObject result = new JsonObject();
-
-		// transférer les données de la requête en Json
-		JsonObject jsObj = Readers.getJSONfromRequest(request);
-
-		// extraire les données qu'on a besoin
-		models.User user = new models.User();
-		user = (models.User) JSonConverter.objectFromJson(jsObj, user);
-
-		// Préparer la réponse
-		UserServices rep = new UserServices();
-//		result = rep.editeUser(user);
-
-		// Envoie de réponse
-		resp.println(result);
-		resp.flush();
-
-	}
 }

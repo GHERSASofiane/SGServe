@@ -8,7 +8,7 @@ public class User {
 
 	private String CMD = "";
 	private String NOMUS, PREUS, ADRUS, TEL1US, TEL2US, MAILUS, MDPUS;
-	private int STATUS, IDUS;
+	private int STATUS, IDUS, ROLUS;
 
 	public String getCMD() {
 		return CMD;
@@ -88,6 +88,14 @@ public class User {
 
 	public void setIDUS(int iDUS) {
 		IDUS = iDUS;
+	}
+
+	public int getROLUS() {
+		return ROLUS;
+	}
+
+	public void setROLUS(int rOLUS) {
+		ROLUS = rOLUS;
 	}
 
 }
